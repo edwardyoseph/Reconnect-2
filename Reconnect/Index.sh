@@ -18,7 +18,7 @@ do
 
     case "$menu" in
         1)
-            python3 /sdcard/ClientData.py
+            python3 /sdcard/Reconnect/ClientData.py
             ;;
         
         2)
