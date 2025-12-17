@@ -43,6 +43,11 @@ def open_roblox(pkg):
     print(f"⏳ Opening Roblox with package: {pkg}...")
     run_adb_command(f"am start -n {pkg}/com.roblox.client.startup.ActivitySplash")
     time.sleep(15)
+    
+def close_roblox(pkg):
+    print(f"⏳ Closing Roblox with package: {pkg}...")
+    run_adb_command(f"am force-stop {pkg}")
+    time.sleep(5)
 
 def update_log_file(data):
     with open(log_file_path, 'w') as log_file:
@@ -61,44 +66,53 @@ packages = [pkg.split(":")[1].strip() for pkg in pkg_output.splitlines()]
 packages_sorted = sorted(packages)
 
 for client_pkg in packages_sorted:
-    time.sleep(2)
-    open_roblox(client_pkg)
+    while True:  # Perulangan untuk client yang sama
+        open_roblox(client_pkg)  # Buka aplikasi Roblox
 
-    pid_command = f"pgrep -f {client_pkg}"
-    pid_output = run_adb_command(pid_command).strip()
+        pid_command = f"pgrep -f {client_pkg}"
+        pid_output = run_adb_command(pid_command).strip()
 
-    if pid_output:
-        pid = pid_output
-        print(f"✅ Client: {client_pkg} (PID: {pid})")
-        
-        logcat_command = f"logcat -d | grep -F {pid} | grep -i 'DID_LOG_IN'"
-        logcat_output = run_adb_command(logcat_command)
+        if pid_output:
+            pid = pid_output
+            print(f"✅ Client: {client_pkg} (PID: {pid})")
+            
+            logcat_command = f"logcat -d | grep -F {pid} | grep -i 'DID_LOG_IN'"
+            logcat_output = run_adb_command(logcat_command)
 
-        if logcat_output:
-            username = None
-            user_id = None
+            if logcat_output:
+                username = None
+                user_id = None
 
-            for line in logcat_output.splitlines():
-                if "username" in line:
-                    username = line.split('"username":"')[1].split('"')[0]
-                if "userId" in line:
-                    user_id = line.split('"userId":')[1].split(",")[0]
+                for line in logcat_output.splitlines():
+                    if "username" in line:
+                        username = line.split('"username":"')[1].split('"')[0]
+                    if "userId" in line:
+                        user_id = line.split('"userId":')[1].split(",")[0]
 
-            if username and user_id:
-                status = get_user_status(user_id)
-                print(f"⭐ Found - Username: {username}, UserId: {user_id}, Status: {status}")
-                data_buffer[username] = {
-                    "username": username,
-                    "user_id": user_id,
-                    "pid": pid,
-                    "client_name": client_pkg,
-                    "status": status
-                }
+                if username and user_id:
+                    status = get_user_status(user_id)
+                    print(f"⭐ Found - Username: {username}, UserId: {user_id}, Status: {status}")
+                    data_buffer[username] = {
+                        "username": username,
+                        "user_id": user_id,
+                        "pid": pid,
+                        "client_name": client_pkg,
+                        "status": status
+                    }
+                    break
+                else:
+                    print(f"⚠️ Could not extract username or userId from logcat for PID {pid}")
+                    continue
+            else:
+                print(f"⚠️ No login data found for client with PID {pid}")
+                continue
         else:
-            print(f"⚠️ No login data found for client with PID {pid}")
-    else:
-        print(f"❌ Client {client_pkg} is not running.")
-
+            print(f"❌ Client {client_pkg} is not running.")
+            close_roblox(client_pkg)
+            continue
+        
+    time.sleep(2)
+        
 if data_buffer:
     print(f"Data buffer contains {len(data_buffer)} entries.")
     update_log_file(data_buffer)
