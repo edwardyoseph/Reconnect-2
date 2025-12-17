@@ -11,8 +11,9 @@ do
     echo "2. Client Process List"
     echo "3. Import Webhook URL"
     echo "4. Import Private Server Link"
-    echo "5. Auto Reconnect"
-    echo "6. Exit"
+    echo "5. Import Script"
+    echo "6. Start Auto Reconnect"
+    echo "7. Exit"
     printf "Pilih menu: "
     read menu
 
@@ -51,8 +52,39 @@ do
                 echo "Link tidak valid. Silakan coba lagi."
             fi
             ;;
-
         5)
+            echo "Executor Manager"    
+            echo "1. Delta"
+            echo "2. Arceus X"
+            echo "3. Codex"
+            printf "Pilih executor: "
+            read executor_choice
+
+            case "$executor_choice" in
+                1)
+                    echo "Masukan Script Delta:"
+                    read delta_folder
+                    echo "$delta_folder" > /storage/emulated/0/Delta/Autoexecute/script.txt
+                    echo "Script Delta berhasil disimpan di /storage/emulated/0/Delta/Autoexecute/script.txt"
+                    ;;
+                2)
+                    echo "Masukan Script Arceus X:"
+                    read arceus_folder
+                    echo "$arceus_folder" > /storage/emulated/0/Arceus\ X/Autoexec/script.txt
+                    echo "Script Arceus X berhasil disimpan di /storage/emulated/0/Arceus\ X/Autoexec/script.txt"
+                    ;;
+                3)
+                    echo "Masukan Script Codex:"
+                    read codex_folder
+                    echo "$codex_folder" > /storage/emulated/0/Codex/Autoexec/script.txt
+                    echo "Script Codex berhasil disimpan di /storage/emulated/0/Codex/Autoexec/script.txt"
+                    ;;
+                *)
+                    echo "Pilihan executor tidak valid!"
+                    ;;
+            esac
+            ;;
+        6)
             echo "Starting Auto Reconnect..."
             echo "checking status..."
             python3 /sdcard/Reconnect/CheckingStatus.py &
@@ -63,7 +95,7 @@ do
             sh /sdcard/Reconnect/reconnect.sh &
             ;;
         
-        6)
+        7)
             echo "Keluar dari program..."
             exit 0
             ;;
