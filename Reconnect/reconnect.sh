@@ -23,19 +23,19 @@ while true; do
     do
         [ -z "$CLIENT" ] && continue
         if [ "$STATUS" = "Offline" ]; then
-            echo "[OFFLINE] Restart Roblox + Join PS"
+
             adb shell am force-stop "$CLIENT"
             sleep 5
             am start -n "$CLIENT/$ACT"
             sleep 10
             am start -a android.intent.action.VIEW -d "$PS_LINK" -p "$CLIENT"
-            sleep 35
+            sleep 15
         fi
 
         if [ "$STATUS" = "Home" ]; then
-            echo "[HOME] Join Private Server"
+
             am start -a android.intent.action.VIEW -d "$PS_LINK" -p "$CLIENT"
-            sleep 35
+            sleep 15
         fi
 
     done
