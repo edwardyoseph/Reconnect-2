@@ -14,9 +14,9 @@ do
     echo "5. Import Script"
     echo "6. Start Auto Reconnect"
     echo "7. Exit"
-    printf "Pilih menu: "
     echo "======================"
     echo ""
+    printf "Pilih menu: "
     read menu
 
     case "$menu" in
@@ -67,19 +67,19 @@ do
                     echo "Masukan Script Delta:"
                     read delta_folder
                     echo "$delta_folder" > /storage/emulated/0/Delta/Autoexecute/script.txt
-                    echo "Script Delta berhasil disimpan di /storage/emulated/0/Delta/Autoexecute/script.txt"
+                    echo "📝Script Delta berhasil disimpan di /storage/emulated/0/Delta/Autoexecute/script.txt"
                     ;;
                 2)
                     echo "Masukan Script Arceus X:"
                     read arceus_folder
                     echo "$arceus_folder" > /storage/emulated/0/Arceus\ X/Autoexec/script.txt
-                    echo "Script Arceus X berhasil disimpan di /storage/emulated/0/Arceus\ X/Autoexec/script.txt"
+                    echo "📝Script Arceus X berhasil disimpan di /storage/emulated/0/Arceus\ X/Autoexec/script.txt"
                     ;;
                 3)
                     echo "Masukan Script Codex:"
                     read codex_folder
                     echo "$codex_folder" > /storage/emulated/0/Codex/Autoexec/script.txt
-                    echo "Script Codex berhasil disimpan di /storage/emulated/0/Codex/Autoexec/script.txt"
+                    echo "📝Script Codex berhasil disimpan di /storage/emulated/0/Codex/Autoexec/script.txt"
                     ;;
                 *)
                     echo "Pilihan executor tidak valid!"
