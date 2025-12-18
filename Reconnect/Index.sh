@@ -8,13 +8,15 @@ do
     echo ""
     echo "=== Roblox Manager ==="
     echo "1. Get Client Data"
-    echo "2. Client Process List"
+    echo "2. Client Account List"
     echo "3. Import Webhook URL"
     echo "4. Import Private Server Link"
     echo "5. Import Script"
     echo "6. Start Auto Reconnect"
     echo "7. Exit"
     printf "Pilih menu: "
+    echo "======================"
+    echo ""
     read menu
 
     case "$menu" in
