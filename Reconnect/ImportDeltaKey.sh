@@ -1,5 +1,5 @@
 echo "Current License Key:"
-if [[ -f /storage/emulated/0/Delta/Internals/Cache/license ]]; then
+if [ -f /storage/emulated/0/Delta/Internals/Cache/license ]; then
     cat /storage/emulated/0/Delta/Internals/Cache/license
 else
     echo "License file not found, skipping cat."
@@ -11,7 +11,7 @@ echo "$new_key" > /storage/emulated/0/Delta/Internals/Cache/license
 echo "Delta Key berhasil diimport!"
 echo "  "
 echo "Updated License Key:"
-if [[ -f /storage/emulated/0/Delta/Internals/Cache/license ]]; then
+if [ -f /storage/emulated/0/Delta/Internals/Cache/license ]; then
     cat /storage/emulated/0/Delta/Internals/Cache/license
 else
     echo "License file not found after import."
