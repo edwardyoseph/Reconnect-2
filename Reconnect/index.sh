@@ -31,17 +31,21 @@ do
                 1)
                     python3 /sdcard/Reconnect/ClientData.py
                     cat "$LOG_FILE"
+                    echo " "
                     ;;
                 2)
                     if [[ -f "$LOG_FILE" ]]; then
                         echo "Membaca log file: $LOG_FILE"
                         cat "$LOG_FILE"
+                        echo " "
                     else
                         echo "Client Data Not Found!"
+                        echo " "
                     fi
                     ;;
                 *)
                     echo "Pilihan executor tidak valid!"
+                    echo " "
                     ;; 
             esac
             ;;
@@ -62,8 +66,10 @@ do
                     if [[ -n "$webhook_url" ]]; then
                         echo "$webhook_url" > "$WEBHOOK_FILE"
                         echo "Webhook URL berhasil disimpan di $WEBHOOK_FILE"
+                        echo " "
                     else
                         echo "URL tidak valid. Silakan coba lagi."
+                        echo " "
                     fi
                     ;;
                 2)
@@ -72,8 +78,10 @@ do
                     if [[ -n "$ps_link" ]]; then
                         echo "$ps_link" > "$PS_LINK_FILE"
                         echo "Private Server Link berhasil disimpan di $PS_LINK_FILE"
+                        echo " "
                     else
                         echo "Link tidak valid. Silakan coba lagi."
+                        echo " "
                     fi
                     ;;  
                 3)
@@ -113,12 +121,15 @@ do
                     case "$delta_menu" in
                         1)
                             sh /sdcard/Reconnect/GetDeltaKey.sh
+                            echo " "
                             ;;
                         2)
                             sh /sdcard/Reconnect/ImportDeltaKey.sh
+                            echo " "
                             ;;
                         *)
                         echo "Pilihan tidak valid!"
+                        echo " "
                         ;;
                     esac
                     ;;
