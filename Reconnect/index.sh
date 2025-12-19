@@ -47,6 +47,7 @@ do
             echo "Auto Reconnect Manager"
             echo "1. Import Webhook URL"
             echo "2. Import Private Server Link"
+            echo "3. Start Auto Reconnect"
             printf "Pilih menu: "
             echo " "
             read reconnect_menu
@@ -71,6 +72,19 @@ do
                         echo "Link tidak valid. Silakan coba lagi."
                     fi
                     ;;  
+                3)
+                    echo "Starting Auto Reconnect..."
+                    echo "checking status..."
+                    python3 /sdcard/Reconnect/CheckingStatus.py &
+
+                    echo "Preparing Reconnect Script..."
+                    dos2unix /sdcard/Reconnect/reconnect.sh
+                    chmod +x /sdcard/Reconnect/reconnect.sh
+                    sh /sdcard/Reconnect/reconnect.sh &
+                    ;;
+                *)
+                    echo "Pilihan tidak valid!"
+                    ;;
             esac
             ;;
         3)
