@@ -19,6 +19,7 @@ do
 
     case "$menu" in
         1)
+            echo " "
             echo "Client Manager"
             echo "1. Get Client Data"
             echo "2. Client Account List"
@@ -45,6 +46,7 @@ do
             esac
             ;;
         2)
+            echo " "
             echo "Auto Reconnect Manager"
             echo "1. Import Webhook URL"
             echo "2. Import Private Server Link"
@@ -90,6 +92,7 @@ do
             esac
             ;;
         3)
+            echo " "
             echo "Executor Manager"    
             echo "1. Delta"
             echo "2. Arceus X"
