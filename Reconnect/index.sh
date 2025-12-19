@@ -42,6 +42,7 @@ do
                     echo "Pilihan executor tidak valid!"
                     ;; 
             esac
+            ;;
         2)
             echo "Auto Reconnect Manager"
             echo "1. Import Webhook URL"
@@ -71,6 +72,7 @@ do
                     fi
                     ;;  
             esac
+            ;;
         3)
             echo "Executor Manager"    
             echo "1. Delta"
