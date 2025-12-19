@@ -36,6 +36,7 @@ do
                         cat "$LOG_FILE"
                     else
                         echo "Client Data Not Found!"
+                    fi
                     ;;
                 *)
                     echo "Pilihan executor tidak valid!"
