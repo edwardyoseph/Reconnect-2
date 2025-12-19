@@ -9,7 +9,7 @@ do
     echo "==== Roblox Manager ===="
     echo "1. Client Manager"
     echo "2. Auto Reconnect Manager"
-    echo "3. Import Script"
+    echo "3. Executor Manager"
     echo "4. Exit"
     echo "======================="
     echo " "
