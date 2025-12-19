@@ -22,6 +22,7 @@ do
             echo "Client Manager"
             echo "1. Get Client Data"
             echo "2. Client Account List"
+            echo " "
             printf "Pilih menu: "
             echo " "
             read client_menu
@@ -48,6 +49,7 @@ do
             echo "1. Import Webhook URL"
             echo "2. Import Private Server Link"
             echo "3. Start Auto Reconnect"
+            echo " "
             printf "Pilih menu: "
             echo " "
             read reconnect_menu
@@ -92,14 +94,18 @@ do
             echo "1. Delta"
             echo "2. Arceus X"
             echo "3. Codex"
+            echo " "
             printf "Pilih executor: "
+            echo " "
             read executor_choice
             case "$executor_choice" in
                 1)
                     echo "Delta selected."
                     echo "1. Get Links"
                     echo "2. Import Keys"
+                    echo " "
                     printf "Pilih menu: "
+                    echo " "
                     read delta_menu
                     case "$delta_menu" in
                         1)
